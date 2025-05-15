@@ -6,17 +6,17 @@ WIDTH, HEIGHT = 1280, 720
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Рисование фигур")
 
-BACKGROUND = (0, 0, 0)
+BACKGROUND = (255, 255, 255)
 PALETTE_COLORS = [
     (255, 0, 0), (0, 255, 0), (0, 0, 255),
     (255, 255, 0), (255, 0, 255), (0, 255, 255),
-    (255, 255, 255), (128, 128, 128), (0, 0, 0)
+    (255,192,203), (128, 128, 128), (0, 0, 0)
 ]
 PALETTE_SIZE = 40
 PALETTE_MARGIN = 10
 PALETTE_START_X = WIDTH - (PALETTE_SIZE + PALETTE_MARGIN) * len(PALETTE_COLORS)
 
-current_color = (255, 255, 255)
+current_color = (0, 0, 0)
 
 circles = []
 rectangles = []
@@ -34,7 +34,6 @@ clock = pygame.time.Clock()
 
 
 def draw_palette():
-    """Рисует палитру цветов в правой части экрана"""
     for i, color in enumerate(PALETTE_COLORS):
         pygame.draw.rect(
             screen,
@@ -66,7 +65,6 @@ while running:
         elif event.type == pygame.MOUSEBUTTONUP and event.button == 1:
             drawing = False
 
-        # Правая кнопка мыши
         elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 3:
             rect_start_pos = event.pos
             rect_current_pos = event.pos
